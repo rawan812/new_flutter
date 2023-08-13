@@ -3,11 +3,20 @@ import 'package:new_flutter/widgets/listView.dart';
 import 'package:new_flutter/widgets/shoppingCountainer.dart';
 class shoppingSreen extends StatefulWidget {
 static String id = 'shopingScreen';
+
   @override
   _shoppingSreenState createState() => _shoppingSreenState();
 }
 
 class _shoppingSreenState extends State<shoppingSreen> {
+  int selectedIndex = -1; // Default value for no item selected
+
+  void _handleItemPressed(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,14 +49,21 @@ class _shoppingSreenState extends State<shoppingSreen> {
 
 
             ),
-            Expanded(
+
+            SizedBox(
+              height:87,
               child: ListView.builder(
                   itemCount:6 ,
 
                   scrollDirection:Axis.horizontal ,
 
                   itemBuilder:(context,index){
-                    return ListViewWidget();
+                    return ListViewWidget(
+                      isSelected: selectedIndex == index,
+                      onPressed: () => _handleItemPressed(index),
+
+
+                    );
 
                   }
 

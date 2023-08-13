@@ -40,7 +40,9 @@ class _shoppingScreen2State extends State<shoppingScreen2> {
 
 
             ),
-            Expanded(
+
+            SizedBox(
+              height:100 ,
               child: ListView.builder(
                   itemCount:6 ,
 
