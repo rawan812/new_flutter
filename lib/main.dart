@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_flutter/views/screens/addressScreen.dart';
 import 'package:new_flutter/views/screens/joinScreen.dart';
 import 'package:new_flutter/views/screens/my%20orders.dart';
 import 'package:new_flutter/views/screens/shoppingScreen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner:false ,
-      home: shoppingSreen(),
+      home: addressScreen(),
 
 
     );
