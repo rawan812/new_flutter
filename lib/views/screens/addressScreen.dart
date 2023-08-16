@@ -12,12 +12,14 @@ class _addressScreenState extends State<addressScreen> {
   int _selectedIndex = -1;
   String selectedbox = '';
 
-  void _onCheckboxChanged(String checkbox) {
+
+  String selectedCheckbox = '';
+
+  void _onCheckboxChanged(String checkboxValue) {
     setState(() {
-      selectedbox = checkbox;
+      selectedCheckbox = checkboxValue;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,22 +43,18 @@ class _addressScreenState extends State<addressScreen> {
             ),
           Column(
             children: [
-              addressListView(
-                color: _selectedIndex == 2 ? Colors.grey[100] : Colors.white,
-
-                onPressed: () {
-                  setState(() {
-                    if (_selectedIndex == 2) {
-                      _selectedIndex = -1;
-                    } else {
-                      _selectedIndex = 2;
-                    }
-                  });
-                },
+              Row(
+                children: [
+                  Text('Use as the shipping address',style: TextStyle(fontSize: 18,fontWeight:FontWeight.w400),),
 
 
-
-
+                  Checkbox(value: selectedCheckbox == 'checkbox1',onChanged: (newValue) {
+                    setState(() {
+                      _onCheckboxChanged('checkbox1');
+                    });
+                  }
+                  ),
+                ],
               ),
               addressListView(
                 color: _selectedIndex == 2 ? Colors.grey[100] : Colors.white,
@@ -74,6 +72,49 @@ class _addressScreenState extends State<addressScreen> {
 
 
 
+              ),
+              Row(
+                children: [
+                  Text('Use as the shipping address',style: TextStyle(fontSize: 18,fontWeight:FontWeight.w400),),
+                  Checkbox(value: selectedCheckbox == 'checkbox2',onChanged: (newValue) {
+                    setState(() {
+                      _onCheckboxChanged('checkbox2');
+                    });
+                  }
+                  ),
+                ],
+              ),
+
+              addressListView(
+                color: _selectedIndex == 2 ? Colors.grey[100] : Colors.white,
+
+                onPressed: () {
+                  setState(() {
+                    if (_selectedIndex == 2) {
+                      _selectedIndex = -1;
+                    } else {
+                      _selectedIndex = 2;
+                    }
+                  });
+                },
+
+
+
+
+              ),
+
+
+              Row(
+                children: [
+                  Text('Use as the shipping address',style: TextStyle(fontSize: 18,fontWeight:FontWeight.w400),),
+
+                  CheckboxListTile(
+                    value: selectedCheckbox == 'checkbox3',
+                    onChanged: (newValue) {
+                      _onCheckboxChanged('checkbox3');
+                    },
+                  ),
+                ],
               ),
               addressListView(
                 color: _selectedIndex == 2 ? Colors.grey[100] : Colors.white,
